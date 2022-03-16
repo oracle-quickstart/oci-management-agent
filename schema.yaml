@@ -1,0 +1,198 @@
+# Copyright (c) 2022, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+title: "Oracle Management Agent Quick Start"
+
+description: "Monitoring Unified DB Audit Logs of ATP instance using Management Agent"
+
+stackDescription: "
+Monitors Unified DB Audit Logs of ATP instance using Management Agent deployed on a new
+Compute Instance after applying necessary Dynamic Groups and Policies. 
+Logging Analytics plugin on the agent is also deployed to assist with the monitoring.
+This stack enables Source-Entity Auto Association in Logging Analytics which can be disabled later 
+if auto association of entities is not desired.
+"
+
+version: "20190304"
+schemaVersion: 1.1.0
+locale: "en"
+
+source:
+  type: quickstart
+
+variableGroups:
+  - title: General OCI Configurations
+    visible: false
+    variables:
+      - tenancy_ocid
+      - compartment_ocid
+      - region
+      
+  - title: Autonomous Database for Transaction Processing
+    visible: true
+    variables:
+      - atp_compartment
+      - atp
+      - atp_username
+      - atp_cred_compartment
+      - atp_credentials
+      - atp_level
+      - log_group_ocid
+
+  - title: Compute Instance details
+    visible: true
+    variables:
+      - instance_name
+      - availability_domain
+      - instance_shape
+      - vcn_ocid
+      - subnet_ocid
+      - user_ssh_secret
+
+  - title: Management Agent IAM Policies
+    visible: true
+    variables:
+      - setup_policies
+
+variables:
+  instance_name:
+    type: string
+    title: Instance name
+    required: true
+    visible: true
+    description: The Compute Instance where Management Agent will be deployed
+    default: ATP-MgmtAgent
+    
+  availability_domain:
+    title: Availability domain
+    type: oci:identity:availabilitydomain:name
+    required: true
+    dependsOn:
+      compartmentId: compartment_ocid
+    visible: true
+
+  instance_shape:
+    title: Instance shape
+    type: oci:core:instanceshape:name
+    dependsOn:
+      compartmentId: compartment_ocid
+      availabilityDomain: availability_domain
+    visible: true
+    required: true
+
+  vcn_ocid:
+    title: Select existing VCN
+    type: oci:core:vcn:id
+    dependsOn:
+      compartmentId: compartment_ocid
+    visible: true
+    required: true
+
+  subnet_ocid:
+    title: Select existing Subnet
+    type: oci:core:subnet:id
+    dependsOn:
+      compartmentId: compartment_ocid
+      vcnId: vcn_ocid
+    visible: true
+    required: true
+
+  user_ssh_secret: 
+    type: oci:core:ssh:publickey
+    title: SSH Public Key
+    description: "The public SSH key for the key-pair that you want to use, if you wish to login to the instances over SSH"
+    visible: true
+    required: true
+
+  atp_compartment:
+    type: oci:identity:compartment:id
+    title: Select ATP Compartment
+    description: The compartment where your ATP resides
+    required: true
+    default: compartment_ocid
+
+  atp:
+    type: oci:database:autonomousdatabase:id
+    title: Select the ATP Database to monitor
+    description: The Autonomous Database that you want to monitor using Management Agent.
+    dependsOn:
+      compartmentId: atp_compartment
+      dbWorkload: OLTP
+    required: true
+
+  atp_cred_compartment:
+    type: oci:identity:compartment:id
+    title: Select Vault Compartment
+    description: The compartment where your DB credential resides
+    required: true
+    default: compartment_ocid
+
+  atp_username:
+    type: string
+    title: "ATP Username"
+    description: "The username to use to connect to ATP"
+    required: true
+
+  atp_credentials:
+    type: "oci:kms:secret:id"
+    title: "Vault Secret"
+    description: "The secret that contains DB Password for the above user"
+    dependsOn:
+      compartmentId: atp_cred_compartment
+    required: true
+  
+  atp_level:
+    type: enum
+    title: "Database Service Name"
+    description: "Select the level of performance and concurrency for Autonomous Database. For more details please refer https://docs.oracle.com/en/cloud/paas/atp-cloud/atpgs/autonomous-connect-database-service-names.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE"
+    required: true
+    enum:
+      - "tpurgent"
+      - "tp"
+      - "high"
+      - "medium"
+      - "low"
+    default: medium
+
+  log_group_ocid:
+    type: string
+    title: "Logging Analytics Log Group OCID"
+    description: "The unique identifier of the log group to use when auto-associting the log source to eligible entities. For more details please refer https://cloud.oracle.com/loganalytics/loggroups"
+    required: true
+    pattern: ^ocid1\.loganalyticsloggroup\.([a-z0-9_-]{1,15})\.([a-z0-9]{0,24})\.([a-z0-9]{60})$
+
+  setup_policies:
+    type: boolean
+    title: Setup default policies
+    description: Uncheck it if you already have all the required policies for Management Agent set.
+    required: true
+    default: true
+
+outputGroups:
+  - title: Resource dashboards
+    outputs:
+      - host_ocid
+      - agent_dashboard
+      - entity_dashboard
+
+outputs:
+  agent_dashboard:
+    type: link
+    title: Management Agent
+    displayText: Agent
+    visible: true
+
+  # No need to create link manually, Resource Manager automatically creates hyperlink to the resource in console
+  host_ocid:
+    type: ocid
+    title: Compute Instance
+    displayText: Instance
+    visible: true
+
+  entity_dashboard:
+    type: link
+    title: Logging Analytics Entity
+    displayText: Entity
+    visible: true
+
+primaryOutputButton: ${dashboard}
