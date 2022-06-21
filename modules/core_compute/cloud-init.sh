@@ -25,9 +25,6 @@ Mime-Version: 1.0
 # Copyright (c) 2022, Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
-set -e
-set -o pipefail
-
 TMP_DIR=`pwd`/cloud_init_tmp
 mkdir $TMP_DIR
 
@@ -38,6 +35,17 @@ AGENT_OCID_FILE=$TMP_DIR/agent.ocid
 LOG_GROUP_OCID_FILE=$TMP_DIR/loggroup.ocid
 ATP_WALLET_ZIP="$BASE_DIR/atp_wallet.zip"
 ATP_WALLET_DIR="$BASE_DIR/${db_name}_wallet"
+TIMEOUT_EXITCODE=2
+
+cleanup_before_exit(){
+	# Delete temporarily create files
+  rm -rf $TMP_DIR
+  rm -rf $ATP_WALLET_ZIP
+
+  echo "Deleted temporary files"
+}
+
+trap cleanup_before_exit EXIT 
 
 startTime=10#$(date +"%M")
 while true
@@ -75,10 +83,31 @@ cat > $AGENT_OCID_FILE <<EOF
 EOF
 
 # Get plugin ocid and create plugin.ocid
+echo "Getting plugin ocid"
 oci --auth instance_principal management-agent plugin list --compartment-id ${compartment_ocid} --query "data[?name == 'logan'].id" > $PLUGIN_OCID_FILE
 
 # Deploy logan plugin
-oci --auth instance_principal management-agent agent deploy-plugins --agent-compartment-id "${compartment_ocid}" --agent-ids file://$AGENT_OCID_FILE --plugin-ids file://$PLUGIN_OCID_FILE --wait-for-state SUCCEEDED
+echo "Deploying Logan plugin"
+deployPlugin=$(oci --auth instance_principal management-agent agent deploy-plugins --agent-compartment-id "${compartment_ocid}" --agent-ids file://$AGENT_OCID_FILE --plugin-ids file://$PLUGIN_OCID_FILE --wait-for-state SUCCEEDED --max-wait-seconds 300 2>&1)
+deployPluginExitCode=$?
+
+if [[ $deployPluginExitCode != 0 ]]; then
+  echo "Failed to deploy plugin due to: $deployPlugin"
+
+  if [[ $deployPluginExitCode == $TIMEOUT_EXITCODE ]]; then
+    echo "Manually checking if plugin deployment succeeded..."
+    pluginFound=$(oci management-agent agent get --agent-id $agent --auth instance_principal --raw-output --query "data.\"plugin-list\"" | grep "logan" 2>&1)
+    pluginFoundExitCode=$?
+
+    if [[ $pluginFoundExitCode != 0 ]]; then
+      echo "No Logan plugin found, exiting Management Agent setup"
+      exit 1
+    fi
+  else
+    echo "Exiting Management Agent setup"
+    exit 1
+  fi
+fi
 
 echo "Successfully deployed logan plugin"
 
@@ -143,11 +172,5 @@ EOF
 # Enable auto association
 oci log-analytics --auth instance_principal source enable-auto-assoc --namespace-name ${namespace} --source-name "unifieddbauditlogfromdbsource122" --items file://$LOG_GROUP_OCID_FILE
 echo "Successfully enabled auto association"
-
-# Delete temporarily create files
-rm -rf $TMP_DIR
-rm $ATP_WALLET_ZIP
-
-echo "Deleted temporary files"
 
 --MIMEBOUNDARY--

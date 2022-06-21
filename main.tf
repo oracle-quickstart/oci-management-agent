@@ -1,7 +1,7 @@
 # Copyright (c) 2022, Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
-data "oci_objectstorage_namespace" "os-namespace" {
+data "oci_objectstorage_namespace" "os_namespace" {
   compartment_id = var.compartment_ocid
 }
 
@@ -10,7 +10,7 @@ data "oci_database_autonomous_database" "autonomous_database" {
 }
 
 locals {
-  namespace                    = data.oci_objectstorage_namespace.os-namespace.namespace
+  namespace                    = data.oci_objectstorage_namespace.os_namespace.namespace
   db_displayname               = data.oci_database_autonomous_database.autonomous_database.display_name
   db_name                      = data.oci_database_autonomous_database.autonomous_database.db_name
   service_name                 = lower("${local.db_name}_${var.atp_level}")
