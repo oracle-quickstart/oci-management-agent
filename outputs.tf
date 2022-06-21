@@ -10,9 +10,9 @@ output "dashboard" {
 }
 
 output "agent_dashboard" {
-  value = format("https://cloud.oracle.com/macs/%s?dashId=agent_dashboard_100",module.macs_interactions.agent_details.id)
+  value = format("https://cloud.oracle.com/macs/%s?dashId=agent_dashboard_100", module.macs_interactions.agent_details.id)
 }
 
 output "entity_dashboard" {
-  value = format("https://cloud.oracle.com/loganalytics/entityDetails/%s",module.la_entity.entity_details.id)
+  value = format("https://cloud.oracle.com/loganalytics/entityDetails/%s", module.la_entity.entity_details.id)
 }

@@ -144,7 +144,7 @@ variables:
   atp_level:
     type: enum
     title: "Database Service Name"
-    description: "Select the level of performance and concurrency for Autonomous Database. For more details please refer https://docs.oracle.com/en/cloud/paas/atp-cloud/atpgs/autonomous-connect-database-service-names.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE"
+    description: "Select the level of performance and concurrency for Autonomous Database. For more details please refer <a target=\"_blank\" href=\"https://docs.oracle.com/en/cloud/paas/atp-cloud/atpgs/autonomous-connect-database-service-names.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE\">Predefined Database Service Names for Autonomous Database</a>"
     required: true
     enum:
       - "tpurgent"
@@ -157,7 +157,7 @@ variables:
   log_group_ocid:
     type: string
     title: "Logging Analytics Log Group OCID"
-    description: "The unique identifier of the log group to use when auto-associting the log source to eligible entities. For more details please refer https://cloud.oracle.com/loganalytics/loggroups"
+    description: "The unique identifier of the log group to use when auto-associting the log source to eligible entities. For more details please refer <a target=\"_blank\" href=\"https://cloud.oracle.com/loganalytics/loggroups\">Logging Analytics Log Groups</a>"
     required: true
     pattern: ^ocid1\.loganalyticsloggroup\.([a-z0-9_-]{1,15})\.([a-z0-9]{0,24})\.([a-z0-9]{60})$
 

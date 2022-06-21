@@ -16,8 +16,8 @@ data "oci_core_images" "instance_source_images" {
 }
 
 data "oci_core_shapes" "test_shapes" {
-    compartment_id = var.compartment_ocid
-    image_id       = local.image_ocid
+  compartment_id = var.compartment_ocid
+  image_id       = local.image_ocid
 }
 
 locals {
