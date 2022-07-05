@@ -155,11 +155,12 @@ variables:
     default: medium
 
   log_group_ocid:
-    type: string
+    type: oci:logan:loggroup:id
     title: "Logging Analytics Log Group OCID"
     description: "The unique identifier of the log group to use when auto-associting the log source to eligible entities. For more details please refer <a target=\"_blank\" href=\"https://cloud.oracle.com/loganalytics/loggroups\">Logging Analytics Log Groups</a>"
     required: true
-    pattern: ^ocid1\.loganalyticsloggroup\.([a-z0-9_-]{1,15})\.([a-z0-9]{0,24})\.([a-z0-9]{60})$
+    dependsOn:
+      compartmentId: ${compartment_ocid}
 
   setup_policies:
     type: boolean
