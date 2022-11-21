@@ -1,0 +1,29 @@
+mgmtagent:
+   # Copy the downloaded Management Agent Install Key file under root helm directory as resources/input.rsp
+   installKey: resources/input.rsp
+   # Follow steps documented at https://github.com/oracle/docker-images/tree/main/OracleManagementAgent to build docker image.
+   image:
+      # Replace this value with actual docker image URL for Management Agent
+      url:
+      # Image secrets to use for pulling container image (base64 encoded content of ~/.docker/config.json file)
+      secret: 
+
+
+# By default, this app will create a below namespace and deploy all new resources in that namespace. You can set this to false if you want to use an already existing namespace
+# Update the namespace name below if required
+createNamespace: true
+
+# Kubernetes namespace to create and install this helm chart in
+namespace: mgmtagent
+
+# By default, metric server will be deployed and used by Management Agent to collect metrics. You can set this to false if you already have metric server installed on your cluster
+deployMetricServer: true
+
+# Kubernetes Cluster details to monitor
+kubernetesCluster:
+   # OCI Compartment Id to push Kubernetes Monitoring metrics. If not specified default is same as Agent compartment
+   compartmentId:
+   # Kubernetes cluster name
+   name:
+   # Kubernetes cluster Namespace to monitor
+   namespace: kube-system
