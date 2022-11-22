@@ -5,25 +5,16 @@
 
 # **OCI Management Agent Quick Start**
 
-[![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/oracle-quickstart/oci-management-agent/archive/refs/tags/v1.0.2.zip)
+Management Agent is a service that provides low latency interactive communication and data collection between Oracle Cloud Infrastructure and any other sources.
 
+This Github repository is a collection of various quick start applications offered by Management Agent. Each project under this repository has its own individual README.md which describes it in more detail.
 
-## Introduction
+At a high level we have following quick start apps:
 
-This stack automates the following:
+- [ATP Monitoring](./atp-monitoring/README.md):
 
-* Creating Dynamic group and adding required policies for Management Agent
-* Spinning up new Compute Instance 
-* Enabling Management Agent on the created instance
-* Deploying Logging Analytics Plugin on the Management Agent
-* Configuration for monitoring Unified DB Audit Logs of ATP Instance
+    This terraform app for monitoring audit logs from an Autonomous Database for transaction processing (ATP),automates the configuration needed to start processing ATP audit logs for analysis in the OCI Logging Analytics.
 
-## Using this stack
+- [Kubernetes Monitoring](./kubernetes-monitoring/mgmtagent_helm/README.md):
 
-1. Click on above Deploy to Oracle Cloud button which will redirect you to OCI console and prompt a dialogue box with further steps on deploying this application.
-2. Configure the variables for the infrastructure resources that this stack will create when you run the apply job for this execution plan.
-3. This stack contains cloud-init scripts which runs after instance is created (which means terraform has completed). Due to this, it might take some time until you can see agent been registered with Logging Analaytics on UI. 
-4. Note that this stack assumes that you have already on-boarded your tenancy to Logging Analytics. If you have not already done that please follow [these](https://docs.oracle.com/en-us/iaas/logging-analytics/doc/configure-your-service.html) steps to on-board your tenancy
-
-Note: For more details on Management Agent please refer
-https://docs.oracle.com/en-us/iaas/management-agents/index.html
+    Oracle Management Agent is now available to be deployed as a Docker Container. This helm chart application provides easy deployment way of Management Agent and offers out-of-box monitoring of Kubernetes Cluster.
