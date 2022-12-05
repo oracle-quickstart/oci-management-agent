@@ -1,0 +1,38 @@
+# Copyright (c) 2022, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+title: "Oracle Management Gateway Quick Start"
+
+description: "Creating Dynamic Groups and Policies for Management Gateway"
+
+stackDescription: "Creates Dynamic groups and policies for a specific compartment within a tenancy for Management Gateway."
+
+version: "20221115"
+schemaVersion: 1.0.0
+locale: "en"
+
+source:
+  type: quickstart
+
+variableGroups:
+  - title: Management Gateway IAM Policies
+    visible: false
+    variables:
+      - tenancy_ocid
+      - compartment_ocid
+      - region
+
+  - title: Policy Compartment Details
+    visible: true
+    variables:
+      - policy_compartment_id
+
+variables:
+  policy_compartment_id:
+    type: oci:identity:compartment:id
+    title: Select Policy Compartment
+    description: The compartment where your policies resides
+    required: true
+    default: compartment_ocid
+
+primaryOutputButton: ${dashboard}
