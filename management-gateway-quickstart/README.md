@@ -16,8 +16,8 @@ This stack automates the following:
 
 ## Using this stack
 
-1. Click on above Deploy to Oracle Cloud button which will redirect you to OCI console and prompt a dialogue box with further steps on deploying this application.
+1. Click on above Deploy to Oracle Cloud button which will redirect you to OCI console and produce a dialog window with further steps for deploying this application.
 2. Configure the variables for the infrastructure resources that this stack will create when you run apply job for this execution plan.
 
-Note: For more details on Management Gateway please refer
+Note: For more details on Management Gateway please refer to
 https://docs.oracle.com/en-us/iaas/management-agents/doc/management-gateway.html
