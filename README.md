@@ -18,3 +18,7 @@ At a high level we have following quick start apps:
 - [Kubernetes Monitoring](./kubernetes-monitoring/mgmtagent_helm/README.md):
 
     Oracle Management Agent is now available to be deployed as a Docker Container. This helm chart application provides easy deployment way of Management Agent and offers out-of-box monitoring of Kubernetes Cluster.
+
+- [Managment Gateway Quick Start](./management-gateway/README.md):
+
+  This terraform app is for creating dynamic groups and policies required for Management Gateway before its installation.
