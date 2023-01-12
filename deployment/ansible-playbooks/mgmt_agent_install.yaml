@@ -1,0 +1,183 @@
+# Copyright (c) 2021, 2022 Oracle and/or its affiliates. All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at http://oss.oracle.com/licenses/upl.
+# 
+---
+
+# validations
+- hosts: target_hosts 
+  vars:
+    # common vars
+  tasks:
+    - name: collect facts about system services
+      service_facts:
+
+    - name: Check if the mgmt_agent service is already installed
+      fail:
+        msg: "mgmt_agent is already installed"
+      when: "'mgmt_agent.service' in services"
+          
+    - name: check java executable is present on remote host
+      become: yes
+      become_user: root
+      command: 
+        "which java"
+      register: java_result
+      tags: check-java-exists
+    - debug: 
+        msg="{{java_result.stdout_lines}}"
+        verbosity=1
+
+    - name: Checking Java version
+      shell: "java -version 2>&1 | awk -F '\"' '/version/ {print $2}' | head -c3"
+      register: java_version
+    - debug: 
+        msg="{{java_version.stdout_lines[0]}}"
+        verbosity=1
+
+    - name: Check if Java Version is greater than 1.8
+      fail:
+        msg: "Java version is less than 1.8, Exiting.."
+      when: java_version.stdout_lines[0]|float < 1.8 
+
+# workflows
+- hosts: localhost
+  collections:
+    - oracle.oci
+  tasks:
+    - name: Check pre-requisites
+      fail:
+        msg: "Environment variable {{item}} not set. Please declare an environment variable with an appropriate value for the sample to work."
+      when: item not in ansible_env
+      with_items:
+        - "compartment_ocid"
+
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: "./{{remote_mgmt_agent_scratch_dir}}"
+        state: directory
+        mode: '0755'
+
+    - name: Create management_agent_install_key
+      oci_management_agent_install_key:
+        # required
+        compartment_id: "{{compartment_ocid}}"
+        display_name:  "{{mgmt_agent_install_key_name}}"
+        # optional
+        #allowed_key_install_count: 56
+        #time_expires: time_expires_example
+        is_unlimited: true
+      register: key_result
+    - debug: 
+        msg="{{key_result.management_agent_install_key}}"
+    - set_fact:
+        management_agent_install_key: "{{key_result.management_agent_install_key.key}}"
+
+    - name: Creating management agent input.rsp file
+      copy:
+        content: "######################################################################## \n
+        # Please refer the following Management Agent Installation Guide for more details. \n
+        # \n
+        # https://docs.cloud.oracle.com/iaas/management-agents/index.html  \n
+        #\n
+        # Since this file has sensitive information, please make sure that after \n
+        # executing setup.sh you either delete this file or store it in a secure \n
+        # location. \n
+        # \n
+        ######################################################################## \n
+        ManagementAgentInstallKey = {{management_agent_install_key}} \n
+        AgentDisplayName = \n
+        #Please uncomment the below tags properties and provide values as needed \n
+        #FreeFormTags = [{\"<key1>\":\"<value1>\"}, {\"<key2>\":\"<value2>\"}]\n
+        #DefinedTags = [{\"namespace1\":{\"<key1>\":\"<value1>\"}}, {\"namespace2\":{\"<key2>\":\"<value2>\"}}]\n
+        ProxyHost = \n
+        ProxyPort = \n
+        ProxyUser = \n
+        ProxyPassword = \n
+        ProxyRealm = \n
+        CredentialWalletPassword = \n
+        #Service.plugin.appmgmt.download=true \n
+        #Service.plugin.jms.download=true \n
+        #Service.plugin.dbaas.download=true \n
+        Service.plugin.logan.download=true
+        #Service.plugin.opsiHost.download=true \n
+        #Service.plugin.jm.download=true" 
+        dest: "./{{remote_mgmt_agent_scratch_dir}}/input.rsp"
+
+    - name: List management agent images
+      oci_management_agent_image_facts:
+        compartment_id: "{{compartment_ocid}}"
+        install_type: AGENT
+      register: image_result
+    - set_fact:
+        object_url: "{{ item.object_url | split('/')}}"
+        namespace: "{{[4]|map('extract', item.object_url.split('/')) | join()}}"
+        bucket_name: "{{[6]|map('extract', item.object_url.split('/')) | join ()}}"
+        object_name: "{{[8,9,10]|map('extract', item.object_url.split('/')) | join('/')}}"
+
+      with_items: "{{image_result.management_agent_images}}"
+      when:
+        - item.platform_name == "Linux-x86_64"
+        - item.package_type == "RPM"
+    - debug:
+        msg: "Extracted the agent image details as follows Namespace: {{namespace}} Bucket: {{bucket_name}} Object name: {{object_name}}"
+  
+    - name: Download Agent RPM object
+      oci_object_storage_object:
+        # required
+        namespace_name: "{{namespace}}"
+        bucket_name: "{{bucket_name}}"
+        object_name: "{{object_name}}"
+        dest: "./{{remote_mgmt_agent_scratch_dir}}/oracle.mgmt_agent.rpm"
+      tags: download_agent
+ 
+- hosts: target_hosts 
+  vars:
+    # common vars
+  tasks:  
+    - name: Transfer all mgmt agent files over to the hosts
+      become: yes
+      become_user: root
+      copy:
+        src: "./{{remote_mgmt_agent_scratch_dir}}"
+        dest: "{{remote_mgmt_agent_scratch_parent}}"
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Install the mgmt agent rpm
+      become: yes
+      become_user: root
+      shell: 
+        "rpm -ivh {{remote_mgmt_agent_scratch_path}}/oracle.mgmt_agent.rpm"
+      tags: install-agent
+
+    - name: Setting up mgmt agent service
+      become: yes
+      become_user: root
+      shell: 
+        "/opt/oracle/mgmt_agent/agent_inst/bin/setup.sh opts={{remote_mgmt_agent_scratch_path}}/input.rsp"
+      tags: setup-agent
+    
+    - name: collect facts about system services
+      service_facts:
+
+    - name: Check if the mgmt_agent service is in running state
+      fail:
+        msg: "mgmt_agent is not in running state"
+      when: "'mgmt_agent.service' not in services or ansible_facts.services['mgmt_agent.service'].state != 'running'"
+    
+    - name: Cleanup management agent scratch
+      become: yes
+      become_user: root
+      file:
+        path: "{{remote_mgmt_agent_scratch_path}}"
+        state: absent
+
+- hosts: localhost
+  collections:
+    - oracle.oci
+  tasks:
+    - name: Cleanup management agent scratch
+      file:
+        path: "./{{remote_mgmt_agent_scratch_dir}}"
+        state: absent

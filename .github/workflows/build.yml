@@ -21,6 +21,9 @@ jobs:
     - name: Package Management Gateway Quickstart
       run: |
         cd ./management-gateway-quickstart && zip -r ../mgmtgateway-quickstart.zip . && cd -
+    - name: Package ansible playbooks
+      run: |
+        cd ./deployment/ansible-playbooks && zip -r ../../ansible-playbooks.zip . && cd -
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -55,4 +58,13 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./mgmtgateway-quickstart.zip
         asset_name: mgmtgateway-quickstart.zip
+        asset_content_type: application/zip
+    - name: Upload ansible playbooks package
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./ansible-playbooks.zip
+        asset_name: ansible-playbooks.zip
         asset_content_type: application/zip
