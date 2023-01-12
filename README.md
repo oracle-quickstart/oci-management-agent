@@ -22,3 +22,9 @@ At a high level we have following quick start apps:
 - [Managment Gateway Quick Start](./management-gateway/README.md):
 
   This terraform app is for creating dynamic groups and policies required for Management Gateway before its installation.
+
+- [Ansible Playbooks](./deployment/ansible-playbooks/README.md):
+
+    This provides the automated agent deployment on multiple target hosts, where monitoring is required.<br>
+    The current playbooks works for linux based hosts, but this can be extended to other operating systems as well.
+    

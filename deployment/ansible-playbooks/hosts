@@ -1,0 +1,29 @@
+# Copyright (c) 2021, 2022 Oracle and/or its affiliates. All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at http://oss.oracle.com/licenses/upl.
+# 
+
+# hosts at which the agent needs to be installed/uninstalled.
+# host names should be seperated by new line.
+[target_hosts]
+#host1.subnetxyz.tenancy1.oracle.com
+#host2.subnetxyz.tenancy1.oracle.com
+
+# These are host specific variables
+[target_hosts:vars]
+# the user that will establish the ssh connection
+ansible_user=<user>
+# private key for the above user
+ansible_ssh_private_key_file=/home/<user>/.ssh/id_rsa
+
+# global variables for the playbook execution
+[all:vars]
+# This is the name of the key which will be used while generating the install key
+mgmt_agent_install_key_name=ansible_agent_install_key
+# parent directory under hosts where the required files will be copied from localhost
+remote_mgmt_agent_scratch_parent=/tmp
+# directory where the rpm and input.rsp is downloaded
+remote_mgmt_agent_scratch_dir=mgmt_agent_scratch
+# host path for the resources
+remote_mgmt_agent_scratch_path={{ remote_mgmt_agent_scratch_parent + '/' + remote_mgmt_agent_scratch_dir }}
+# compartment ocid for the Management Agent
+compartment_ocid="{{ lookup('env', 'compartment_ocid') }}"
