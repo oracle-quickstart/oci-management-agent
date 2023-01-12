@@ -8,10 +8,10 @@ The current playbooks works for linux based hosts, but this can be extended to o
 <br/><br/>
 ## Pre-requisites
 - Make sure you have SSH capability on the target hosts and the user connecting through SSH has the capability to become root.
-- You need to have OCI CLI installed and OCI config created.<br/>
+- You need to have OCI CLI installed and OCI configuration created only on the localhost from where the deployment is initiated.<br/>
 refer: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm#Quickstart
 
-- You need ansible collection to execute playbooks and configured with OCI CLI.<br/>
+- You need ansible collection to execute playbooks and configured with OCI CLI on the localhost from where the deployment is initiated.<br/>
 refer: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/ansiblegetstarted.htm#Getting_Started_with_Oracle_Cloud_Infrastructure_and_Ansible
 
 <br/><br/>
@@ -46,7 +46,7 @@ Note:
 - The -kK option is the shorthand of --ask-pass and  --ask-become-pass
 
 - SSH password: The ssh user password<br>
-- BECOME password[defaults to SSH password]: The password to become the root.
+- BECOME password[defaults to SSH password]: The password to become the root user.
 
 
 <br/><br/>
