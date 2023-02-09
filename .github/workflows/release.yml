@@ -23,6 +23,5 @@ jobs:
         uses: helm/chart-releaser-action@v1.1.0
         with:
           charts_dir: kubernetes-monitoring
-          charts_repo_url: https://niravg75.github.io/oci-management-agent/charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
