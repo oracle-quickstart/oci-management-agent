@@ -23,6 +23,8 @@ rules:
       - get
       - list
       - watch
+  - nonResourceURLs: ["/metrics"]
+    verbs: ["get"]
   - apiGroups:
       - metrics.k8s.io
     resources:
