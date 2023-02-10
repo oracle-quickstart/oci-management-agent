@@ -9,7 +9,7 @@ mgmtagent:
       secret: 
 
 
-# By default, this app will create a below namespace and deploy all new resources in that namespace. You can set this to false if you want to use an already existing namespace
+# By default, this app will create namespace in the following property and deploy all new resources in that namespace. You can set this to false if you want to use an already existing namespace
 # Update the namespace name below if required
 createNamespace: true
 
