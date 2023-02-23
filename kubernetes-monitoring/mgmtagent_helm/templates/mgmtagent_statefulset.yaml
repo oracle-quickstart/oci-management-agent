@@ -16,6 +16,10 @@ spec:
       labels:
         app: mgmtagent
     spec:
+      securityContext:
+        runAsUser: {{ default 0 .Values.mgmtagent.runAsUser }}
+        runAsGroup: {{ default 0 .Values.mgmtagent.runAsGroup }}
+        fsGroup: {{ default 0 .Values.mgmtagent.fsGroup }}
       serviceAccountName: mgmtagent-serviceaccount
       imagePullSecrets:
         - name: mgmtagent-container-registry-key
@@ -43,7 +47,6 @@ spec:
         name: mgmtagent-pvc
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "oci-bv"
         resources:
           requests:
             storage: 2Gi

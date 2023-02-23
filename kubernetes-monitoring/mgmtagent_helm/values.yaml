@@ -1,4 +1,7 @@
 mgmtagent:
+   runAsUser: 1000
+   runAsGroup: 2000
+   fsGroup: 2000
    # Copy the downloaded Management Agent Install Key file under root helm directory as resources/input.rsp
    installKey: resources/input.rsp
    # Follow steps documented at https://github.com/oracle/docker-images/tree/main/OracleManagementAgent to build docker image.
