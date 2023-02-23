@@ -1,6 +1,9 @@
 mgmtagent:
+   # Processes in the Container will run as user ID 1000, replace it with a different value if desired
    runAsUser: 1000
+   # Processes in the Container will use group ID 2000, replace it with a different value if desired
    runAsGroup: 2000
+   # Files created in the Container will use group ID 2000, replace it with a different value if desired
    fsGroup: 2000
    # Copy the downloaded Management Agent Install Key file under root helm directory as resources/input.rsp
    installKey: resources/input.rsp
