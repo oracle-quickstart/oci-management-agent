@@ -1,10 +1,10 @@
 mgmtagent:
-   # Provide either installKeyValue or installKeyFile as an install key. If both provided then installKeyValue will take higher precedence.
+   # Provide either installKeyValue or installKey as an install key. If both provided then installKeyValue will take higher precedence.
    
    # Use the Base64 encoded value of Management Agent Install Key
    installKeyValue:
    # Copy the downloaded Management Agent Install Key file under root helm directory as resources/input.rsp
-   installKeyFile: resources/input.rsp
+   installKey: resources/input.rsp
    # Follow steps documented at https://github.com/oracle/docker-images/tree/main/OracleManagementAgent to build docker image.
    image:
       # Replace this value with actual docker image URL for Management Agent
@@ -29,5 +29,5 @@ kubernetesCluster:
    compartmentId:
    # Kubernetes cluster name
    name:
-   # Kubernetes cluster Namespace to monitor
+   # Kubernetes cluster namespace(s) to monitor. This can be a comma-separated list of namespaces or '*' to monitor all the namespaces
    namespace: '*'
