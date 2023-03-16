@@ -31,3 +31,5 @@ kubernetesCluster:
    name:
    # Kubernetes cluster namespace(s) to monitor. This can be a comma-separated list of namespaces or '*' to monitor all the namespaces
    namespace: '*'
+   # Provide the storage class for StatefulSet's PVC. If not provided then the Cluster's default storage class will be used.
+   storageClass:

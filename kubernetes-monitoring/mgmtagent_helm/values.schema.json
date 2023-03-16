@@ -1,0 +1,115 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "properties":
+    {
+        "mgmtagent":
+        {
+            "properties":
+            {
+                "installKeyFileContent":
+                {
+                    "type":
+                    [
+                        "string",
+                        "null"
+                    ]
+                },
+                "installKey":
+                {
+                    "type":
+                    [
+                        "string",
+                        "null"
+                    ]
+                },
+                "image":
+                {
+                    "properties":
+                    {
+                        "url":
+                        {
+                            "type": "string"
+                        },
+                        "secret":
+                        {
+                            "type": "string"
+                        }
+                    },
+                    "required":
+                    [
+                        "url",
+                        "secret"
+                    ]
+                }
+            },
+            "anyOf":
+            [
+                {
+                    "properties":
+                    {
+                        "installKeyFileContent":
+                        {
+                            "minLength": 0
+                        }
+                    },
+                    "required":
+                    [
+                        "installKey"
+                    ]
+                },
+                {
+                    "properties":
+                    {
+                        "installKey":
+                        {
+                            "minLength": 0
+                        }
+                    },
+                    "required":
+                    [
+                        "installKeyFileContent"
+                    ]
+                }
+            ],
+            "type": "object"
+        },
+        "createNamespace":
+        {
+            "type": "boolean"
+        },
+        "namespace":
+        {
+            "type": "string"
+        },
+        "deployMetricServer":
+        {
+            "type": "boolean"
+        },
+        "kubernetesCluster":
+        {
+            "properties":
+            {
+                "name":
+                {
+                    "type": "string"
+                },
+                "namespace":
+                {
+                    "type": "string"
+                }
+            },
+            "required":
+            [
+                "name",
+                "namespace"
+            ]
+        }
+    },
+    "required":
+    [
+        "createNamespace",
+        "namespace"
+    ],
+    "title": "Values",
+    "type": "object"
+}
