@@ -23,6 +23,9 @@ namespace: mgmtagent
 # By default, metric server will be deployed and used by Management Agent to collect metrics. You can set this to false if you already have metric server installed on your cluster
 deployMetricServer: true
 
+# Provide the storage class for StatefulSet's PVC. If not provided then the Cluster's default storage class will be used.
+storageClass:
+
 # Kubernetes Cluster details to monitor
 kubernetesCluster:
    # OCI Compartment Id to push Kubernetes Monitoring metrics. If not specified default is same as Agent compartment
@@ -31,5 +34,3 @@ kubernetesCluster:
    name:
    # Kubernetes cluster namespace(s) to monitor. This can be a comma-separated list of namespaces or '*' to monitor all the namespaces
    namespace: '*'
-   # Provide the storage class for StatefulSet's PVC. If not provided then the Cluster's default storage class will be used.
-   storageClass:

@@ -32,13 +32,16 @@
                         },
                         "secret":
                         {
-                            "type": "string"
+                            "type":
+                            [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "required":
                     [
-                        "url",
-                        "secret"
+                        "url"
                     ]
                 }
             },
