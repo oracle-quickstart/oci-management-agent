@@ -43,7 +43,9 @@ spec:
         name: mgmtagent-pvc
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "oci-bv"
+        {{- if .Values.kubernetesCluster.storageClass }}
+        storageClassName: {{ .Values.kubernetesCluster.storageClass }}
+        {{- end }}
         resources:
           requests:
             storage: 2Gi
