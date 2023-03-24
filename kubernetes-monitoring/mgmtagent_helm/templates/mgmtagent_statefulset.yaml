@@ -31,6 +31,10 @@ spec:
               mountPath: /opt/oracle
             - name: mgmtagent-config
               mountPath: /opt/oracle/mgmtagent_config
+            {{- range $v := .Values.mgmtagent.additionalConfigMaps }}
+            - name: ext-{{ $v.name }}
+              mountPath: {{ $v.mountPath }}
+            {{- end }}
       volumes:
         - name: mgmtagent-secret
           secret:
@@ -38,6 +42,11 @@ spec:
         - name: mgmtagent-config
           configMap:
             name: mgmtagent-monitoring-config
+        {{- range $v := .Values.mgmtagent.additionalConfigMaps }}
+        - name: ext-{{ $v.name }}
+          configMap:
+            name: {{ $v.name }}
+        {{- end }}
   volumeClaimTemplates:
     - metadata:
         name: mgmtagent-pvc

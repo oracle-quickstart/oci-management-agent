@@ -6,6 +6,12 @@ mgmtagent:
    # Copy the downloaded Management Agent Install Key file under root helm directory as resources/input.rsp
    installKey: resources/input.rsp
    # Follow steps documented at https://github.com/oracle/docker-images/tree/main/OracleManagementAgent to build docker image.
+
+   # Allow user to mount additional configmap to customize management agent config json (i.e. customize prometheus collect time)
+#  additionalConfigMaps:
+#     - name: mgmt-agent-config
+#       mountPath: "/opt/oracle/mgmt_agent/agent_inst/config/destinations/OCI/services/Agent/1/types/"
+
    image:
       # Replace this value with actual docker image URL for Management Agent
       url:

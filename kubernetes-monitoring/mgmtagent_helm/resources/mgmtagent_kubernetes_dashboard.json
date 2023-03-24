@@ -287,7 +287,7 @@
                     }
                 },
                 {
-                    "displayName": "Pod CPU Usage",
+                    "displayName": "Container CPU Usage",
                     "savedSearchId": "OOBSS-management-dashboard-123",
                     "row": 6,
                     "column": 0,
@@ -296,21 +296,21 @@
                     "nls": {},
                     "uiConfig": {
                         "chartInfo": {
-                            "colorBy": "dimensions.containerName",
+                            "colorBy": "dimensions.container",
                             "enableCorrelation": true,
                             "group": "aggregatedDatapoints.timestamp",
-                            "series": "dimensions.containerName",
+                            "series": "dimensions.container",
                             "value": "aggregatedDatapoints.value"
                         },
-                        "defaultDataSource": "mgmtagent_kubernetes_metrics/podCpuUsage",
+                        "defaultDataSource": "mgmtagent_kubernetes_metrics/container_cpu_usage_seconds_total",
                         "internalKey": "OOBSS-management-dashboard-123",
                         "jetConfig": {
                             "dataCursor": "on",
                             "legend": {
-                                "position": "top",
+                                "position": "end",
                                 "rendered": true
                             },
-                            "stack": "off",
+                            "stack": "on",
                             "styleDefaults": {
                                 "lineWidth": 2
                             },
@@ -327,11 +327,11 @@
                     },
                     "dataConfig": [
                         {
-                            "name": "mgmtagent_kubernetes_metrics/podCpuUsage",
+                            "name": "mgmtagent_kubernetes_metrics/container_cpu_usage_seconds_total",
                             "parameters": {
                                 "compartmentId": "$(params.compartmentIdParam)",
                                 "endTime": "$(context.time.end)",
-                                "mql": "podCpuUsage[auto].groupBy(containerName).mean()",
+                                "mql": "container_cpu_usage_seconds_total[1m]{cpu = total}.groupBy(container).sum()",
                                 "namespace": "mgmtagent_kubernetes_metrics",
                                 "startTime": "$(context.time.start)"
                             },
@@ -346,7 +346,7 @@
                     }
                 },
                 {
-                    "displayName": "Pod Memory Usage",
+                    "displayName": "Container Memory Usage",
                     "savedSearchId": "OOBSS-management-dashboard-123",
                     "row": 6,
                     "column": 6,
@@ -355,21 +355,21 @@
                     "nls": {},
                     "uiConfig": {
                         "chartInfo": {
-                            "colorBy": "dimensions.containerName",
+                            "colorBy": "dimensions.container",
                             "enableCorrelation": true,
                             "group": "aggregatedDatapoints.timestamp",
-                            "series": "dimensions.containerName",
+                            "series": "dimensions.container",
                             "value": "aggregatedDatapoints.value"
                         },
-                        "defaultDataSource": "mgmtagent_kubernetes_metrics/podMemoryUsage",
+                        "defaultDataSource": "mgmtagent_kubernetes_metrics/container_memory_working_set_bytes",
                         "internalKey": "OOBSS-management-dashboard-123",
                         "jetConfig": {
                             "dataCursor": "on",
                             "legend": {
-                                "position": "top",
+                                "position": "end",
                                 "rendered": true
                             },
-                            "stack": "off",
+                            "stack": "on",
                             "styleDefaults": {
                                 "lineWidth": 2
                             },
@@ -386,11 +386,11 @@
                     },
                     "dataConfig": [
                         {
-                            "name": "mgmtagent_kubernetes_metrics/podMemoryUsage",
+                            "name": "mgmtagent_kubernetes_metrics/container_memory_working_set_bytes",
                             "parameters": {
                                 "compartmentId": "$(params.compartmentIdParam)",
                                 "endTime": "$(params.time.end)",
-                                "mql": "podMemoryUsage[auto].groupBy(containerName).mean()",
+                                "mql": "container_memory_working_set_bytes[1m].groupBy(container).sum()",
                                 "namespace": "mgmtagent_kubernetes_metrics",
                                 "startTime": "$(params.time.start)"
                             },
