@@ -35,6 +35,11 @@ spec:
               mountPath: /opt/oracle
             - name: mgmtagent-config
               mountPath: /opt/oracle/mgmtagent_config
+            - mountPath: /tmp
+              name: tmp
+          securityContext:
+           allowPrivilegeEscalation: false
+           readOnlyRootFilesystem: true
       volumes:
         - name: mgmtagent-secret
           secret:
@@ -42,6 +47,8 @@ spec:
         - name: mgmtagent-config
           configMap:
             name: mgmtagent-monitoring-config
+        - emptyDir: {}
+          name: tmp
   volumeClaimTemplates:
     - metadata:
         name: mgmtagent-pvc
