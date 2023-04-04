@@ -33,6 +33,14 @@ rules:
       - get
       - list
       - watch
+  - apiGroups:
+      - apps
+    resources:
+      - '*'
+    verbs:
+      - get
+      - list
+      - watch
 
 ---
 
