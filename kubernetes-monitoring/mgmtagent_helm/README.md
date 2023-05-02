@@ -58,8 +58,13 @@ Compartment OCID | The OCID of the Compartment in which the metrics to be ingest
 
 - This file contains all the default values possible to setup the monitoring, but few values needs to be provided either through an external values.yaml file or by modifying this file. It is recommended to use external values.yaml to override any values.
 - Inline documentation has the description and possible values for each of the configuration parameters.
-- Value for `mgmtagent:installKey` is a relative path from root helm directory to install key file. Replace the empty input.rsp file in resources/input.rsp with the actual file. If you rename or change the path then update this value accordingly.
+- Management Agent Install Key is set either with `mgmtagent:installKeyFileContent` a base64 encoded format of the input.rsp file content, or with `mgmtagent:installKey` a relative path from root helm directory to install key file. Replace the empty input.rsp file in resources/input.rsp with the actual file. If you rename or change the path then update this value accordingly.
     ```shell
+    # for mgmtagent:installKeyFileContent
+    $ base64 -w 0 ../input.rsp
+    ```
+    ```shell
+    # for mgmtagent:installKey
     $ cp ../input.rsp ./resources
     ```
 - Value `mgmtagent:image:secret` is expected in base64 encoded format. These are the secrets used to pull docker image. Typically it is base64 encoded content of ~/.docker/config json file. You can encode it as:
@@ -67,6 +72,7 @@ Compartment OCID | The OCID of the Compartment in which the metrics to be ingest
     ```shell
     base64 ~/.docker/config 
     ```
+- As a security measure process privilege escalation in the container is disallowed and the values for `mgmtagent:runAsUser`, `mgmtagent:runAsGroup`, and `mgmtagent:fsGroup` are required. Default values for these fields are already provided in values.yaml, but can be changed as needed.
 
 #### Commands Reference
 
