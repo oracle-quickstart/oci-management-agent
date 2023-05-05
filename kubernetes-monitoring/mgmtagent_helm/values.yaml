@@ -1,11 +1,4 @@
 mgmtagent:
-   # Processes in the Container will run as user ID 1000, replace it with a different value if desired
-   runAsUser: 1000
-   # Processes in the Container will use group ID 2000, replace it with a different value if desired
-   runAsGroup: 2000
-   # Files created in the Container will use group ID 2000, replace it with a different value if desired
-   fsGroup: 2000
-   
    # Provide either installKeyFileContent or installKey as an install key. If both provided then installKeyFileContent will take higher precedence.
    # Provide the base64 encoded content of the Management Agent Install Key file
    installKeyFileContent:
@@ -29,9 +22,6 @@ namespace: mgmtagent
 # By default, metric server will be deployed and used by Management Agent to collect metrics. You can set this to false if you already have metric server installed on your cluster
 deployMetricServer: true
 
-# Provide the storage class for StatefulSet's PVC. If not provided then the Cluster's default storage class will be used.
-storageClass:
-
 # Kubernetes Cluster details to monitor
 kubernetesCluster:
    # OCI Compartment Id to push Kubernetes Monitoring metrics. If not specified default is same as Agent compartment
@@ -40,3 +30,32 @@ kubernetesCluster:
    name:
    # Kubernetes cluster namespace(s) to monitor. This can be a comma-separated list of namespaces or '*' to monitor all the namespaces
    namespace: '*'
+
+deployment:
+   security:
+      # Processes in the Container will run as user ID 1000, replace it with a different value if desired
+      runAsUser: 1000
+      # Processes in the Container will use group ID 2000, replace it with a different value if desired
+      runAsGroup: 2000
+      # Files created in the Container will use group ID 2000, replace it with a different value if desired
+      fsGroup: 2000
+
+   # Provide the agent resources as per Kubernetes resource quantity
+   resource:
+      # Provide the minimum required resources
+      request:
+         # specify the cpu cores
+         cpuCore: 100m
+         # specify the memory
+         memory: 500Mi
+         # specify the storage capacity for StatefulSet's PVC
+         storage: 2Gi
+      # Provide the maximum limit for resources
+      limit:
+         # specify the cpu cores
+         cpuCore: 500m
+         # specify the memory
+         memory: 1Gi
+   
+   # Provide the storage class for StatefulSet's PVC. If not provided then the Cluster's default storage class will be used.
+   storageClass:
