@@ -17,9 +17,9 @@ spec:
         app: mgmtagent
     spec:
       securityContext:
-        runAsUser: {{ default 0 .Values.mgmtagent.runAsUser }}
-        runAsGroup: {{ default 0 .Values.mgmtagent.runAsGroup }}
-        fsGroup: {{ default 0 .Values.mgmtagent.fsGroup }}
+        runAsUser: {{ default 0 .Values.deployment.security.runAsUser }}
+        runAsGroup: {{ default 0 .Values.deployment.security.runAsGroup }}
+        fsGroup: {{ default 0 .Values.deployment.security.fsGroup }}
       serviceAccountName: mgmtagent-serviceaccount
       imagePullSecrets:
         - name: mgmtagent-container-registry-key
@@ -27,6 +27,13 @@ spec:
       containers:
         - name: mgmtagent
           image: {{ .Values.mgmtagent.image.url }}
+          resources:
+            requests:
+              cpu: {{ .Values.deployment.resource.request.cpuCore }}
+              memory: {{ .Values.deployment.resource.request.memory }}
+            limits:
+              cpu: {{ .Values.deployment.resource.limit.cpuCore }}
+              memory: {{ .Values.deployment.resource.limit.memory }}
           volumeMounts:
             - name: mgmtagent-secret
               mountPath: /opt/oracle/mgmtagent_secret
@@ -54,9 +61,9 @@ spec:
         name: mgmtagent-pvc
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        {{- if .Values.kubernetesCluster.storageClass }}
-        storageClassName: {{ .Values.kubernetesCluster.storageClass }}
+        {{- if .Values.deployment.storageClass }}
+        storageClassName: {{ .Values.deployment.storageClass }}
         {{- end }}
         resources:
           requests:
-            storage: 2Gi
+            storage: {{ .Values.deployment.resource.request.storage }}

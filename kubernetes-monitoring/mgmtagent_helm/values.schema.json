@@ -106,6 +106,91 @@
                 "name",
                 "namespace"
             ]
+        },
+        "deployment":
+        {
+            "properties":
+            {
+                "security":
+                {
+                    "properties":
+                    {
+                        "runAsUser":
+                        {
+                            "type":
+                            [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "runAsGroup":
+                        {
+                            "type":
+                            [
+                                "integer",
+                                "null"
+                            ]
+                        },
+                        "fsGroup":
+                        {
+                            "type":
+                            [
+                                "integer",
+                                "null"
+                            ]
+                        }
+                    }
+                },
+                "resource":
+                {
+                    "properties":
+                    {
+                        "request":
+                        {
+                            "properties":
+                            {
+                                "cpuCore":
+                                {
+                                    "type": "string"
+                                },
+                                "memory":
+                                {
+                                    "type": "string"
+                                },
+                                "storage":
+                                {
+                                    "type": "string"
+                                }
+                            },
+                            "required":
+                            [
+                                "cpuCore",
+                                "memory",
+                                "storage"
+                            ]
+                        },
+                        "limit":
+                        {
+                            "properties":
+                            {
+                                "cpuCore":
+                                {
+                                    "type": "string"
+                                },
+                                "memory":
+                                {
+                                    "type": "string"
+                                }
+                            },
+                            "required":
+                            [
+                                "cpuCore",
+                                "memory"
+                            ]
+                        }
+                    }
+                }
+            }
         }
     },
     "required":
