@@ -60,6 +60,7 @@ module "create_mgmt_gateway_policies" {
     "ALLOW DYNAMIC-GROUP ${local.mgmtgateway_dynamic_group_name} TO MANAGE certificate-authorities IN COMPARTMENT ID ${var.policy_compartment_id} where any{request.permission='CERTIFICATE_AUTHORITY_CREATE', request.permission='CERTIFICATE_AUTHORITY_INSPECT', request.permission='CERTIFICATE_AUTHORITY_READ'}",
     "ALLOW DYNAMIC-GROUP ${local.mgmtgateway_dynamic_group_name} TO USE certificate-authority-delegates IN COMPARTMENT ID ${var.policy_compartment_id}",
     "ALLOW DYNAMIC-GROUP ${local.mgmtgateway_dynamic_group_name} TO MANAGE leaf-certificates IN COMPARTMENT ID ${var.policy_compartment_id} where any{request.permission='CERTIFICATE_CREATE', request.permission = 'CERTIFICATE_INSPECT', request.permission = 'CERTIFICATE_UPDATE', request.permission = 'CERTIFICATE_READ'}",
+    "ALLOW DYNAMIC-GROUP ${local.mgmtgateway_dynamic_group_name} TO MANAGE leaf-certificates IN COMPARTMENT ID ${var.policy_compartment_id} where all{request.permission='CERTIFICATE_DELETE', target.leaf-certificate.name=request.principal.id}",
     "ALLOW DYNAMIC-GROUP ${local.mgmtgateway_credential_group_name} TO USE certificate-authority-delegates in COMPARTMENT ID ${var.policy_compartment_id}",
     "ALLOW DYNAMIC-GROUP ${local.mgmtgateway_credential_group_name} TO USE vaults in COMPARTMENT ID ${var.policy_compartment_id}",
     "ALLOW DYNAMIC-GROUP ${local.mgmtgateway_credential_group_name} TO USE keys in COMPARTMENT ID ${var.policy_compartment_id}"
