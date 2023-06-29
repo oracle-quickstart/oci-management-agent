@@ -3,8 +3,20 @@ entries:
   mgmtagent_helm:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-06-29T21:02:19.321049278Z"
+    description: A Helm chart for collecting Kubernetes Metrics using OCI Management
+      Agent
+    digest: b634c09bb8da3dc0e830908ccd4b78eb7f39469a5b2944a9738a17d19c562697
+    name: mgmtagent_helm
+    type: application
+    urls:
+    - https://github.com/oracle-quickstart/oci-management-agent/releases/download/mgmtagent_helm-2.0.2/mgmtagent_helm-2.0.2.tgz
+    version: 2.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-05-05T13:39:40.024363067Z"
-    description: A Helm chart for collecting Kubernetes Metrics using OCI Management Agent
+    description: A Helm chart for collecting Kubernetes Metrics using OCI Management
+      Agent
     digest: c7ccd26f2b6ed2d90b5645e05ef5c7bf65f48edea4857acbfa8d753cf0d68f85
     name: mgmtagent_helm
     type: application
@@ -14,7 +26,8 @@ entries:
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-03-03T18:26:51.072190035Z"
-    description: A Helm chart for collecting Kubernetes Metrics using OCI Management Agent
+    description: A Helm chart for collecting Kubernetes Metrics using OCI Management
+      Agent
     digest: 5c84435c870855123be4467a0f6822a74533b7d929c3cc808c15adff6249fef4
     name: mgmtagent_helm
     type: application
@@ -24,11 +37,12 @@ entries:
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-02-10T19:52:03.822819759Z"
-    description: A Helm chart for collecting Kubernetes Metrics using OCI Management Agent
+    description: A Helm chart for collecting Kubernetes Metrics using OCI Management
+      Agent
     digest: 5bd09c1807c39d2426a69416b0d3409362803048d19d1d0ee8a954d8a5ff2c8e
     name: mgmtagent_helm
     type: application
     urls:
     - https://github.com/oracle-quickstart/oci-management-agent/releases/download/mgmtagent_helm-0.1.0/mgmtagent_helm-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-10T19:52:03.511491818Z"
+generated: "2023-06-29T21:02:19.321068578Z"
