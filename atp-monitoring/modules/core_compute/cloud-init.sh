@@ -127,6 +127,10 @@ oci --auth instance_principal db autonomous-database generate-wallet --autonomou
 # Get SSL Server Cert DN
 serverCertDn=$(oci --auth instance_principal db autonomous-database get --raw-output --autonomous-database-id ${db_ocid} --query "data.\"connection-strings\".\"profiles\"[?\"display-name\" == '${level}'].value | [0]" | grep -oP 'ssl_server_cert_dn="\K[^"]+')
 
+if [ -z "$serverCertDn" ]; then
+   serverCertDn="unknownDn"
+fi
+
 # Unzip downloaded wallet and fix permissions
 unzip $ATP_WALLET_ZIP -d $ATP_WALLET_DIR
 chown -R oracle-cloud-agent:oracle-cloud-agent $ATP_WALLET_DIR
