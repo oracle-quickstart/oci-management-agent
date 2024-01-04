@@ -7,6 +7,10 @@ The current playbooks works for linux based hosts, but this can be extended to o
 
 <br/><br/>
 ## Pre-requisites
+- Make sure ansible (version 2.9 or above version) is installed on localhost from where the deployment is initiated
+refer: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+- Make sure python3 (version 3.6 or above version) is installed in all target hosts and localhost from where the deployment is initiated
+refer: https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python
 - Make sure you have SSH capability on the target hosts and the user connecting through SSH has the capability to become root.
 - You need to have OCI CLI installed and OCI configuration created only on the localhost from where the deployment is initiated.<br/>
 refer: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm#Quickstart
@@ -35,6 +39,11 @@ export compartment_ocid=<your_compartment_ocid_goes_here>
 ### Installing agent
 ```
 ansible-playbook -i hosts mgmt_agent_install.yaml -kK
+```
+
+### Upgrading agent
+```
+ansible-playbook -i hosts mgmt_agent_upgrade.yaml -kK
 ```
 
 ### Uninstalling agent
