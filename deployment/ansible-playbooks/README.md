@@ -4,10 +4,9 @@
 This provides the automated agent deployment on multiple target hosts, where monitoring is required.<br>
 Following sections will walk you through the pre-requisites, configuration and executing the playbooks.<br>
 The current playbooks works for linux based hosts, but this can be extended to other operating systems as well.
-
 <br/><br/>
 ## Pre-requisites
-- Make sure ansible (version 2.9 or above version) is installed on localhost from where the deployment is initiated
+- Make sure ansible (version 2.9 or above version) is installed on localhost from where the deployment is initiated.
 refer: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 - Make sure python3 (version 3.6 or above version) is installed in all target hosts and localhost from where the deployment is initiated
 refer: https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python
@@ -17,7 +16,6 @@ refer: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm#Qui
 
 - You need ansible collection to execute playbooks and configured with OCI CLI on the localhost from where the deployment is initiated.<br/>
 refer: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/ansiblegetstarted.htm#Getting_Started_with_Oracle_Cloud_Infrastructure_and_Ansible
-
 <br/><br/>
 ## Configuration
 ### Hosts file
@@ -56,8 +54,6 @@ Note:
 
 - SSH password: The ssh user password<br>
 - BECOME password[defaults to SSH password]: The password to become the root user.
-
-
 <br/><br/>
 ## Verifying the execution of playbooks
 - At the end of each playbook run, you should be able to see something similar like this for a successful execution
@@ -70,7 +66,6 @@ localhost                  : ok=12   changed=1    unreachable=0    failed=0    s
 
 - Go to oracle cloud - Observability & Management -  Management Agents - Agents
   - select the compartment and verify the installed agents
-
 <br/><br/>
 ## Copyright
 Copyright (c) 2022 Oracle and/or its affiliates.
