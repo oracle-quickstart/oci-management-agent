@@ -6,7 +6,7 @@ Following sections will walk you through the pre-requisites, configuration and e
 The current playbooks works for linux based hosts, but this can be extended to other operating systems as well.
 <br/><br/>
 ## Pre-requisites
-- Make sure ansible (version 2.9 or above version) is installed on localhost from where the deployment is initiated.
+- Make sure ansible (version 2.9 or above version) is installed on localhost from where the deployment is to be initiated.
 refer: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 - Make sure python3 (version 3.6 or above version) is installed in all target hosts and localhost from where the deployment is initiated
 refer: https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python
