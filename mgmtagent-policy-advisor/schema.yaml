@@ -1,0 +1,76 @@
+# Copyright (c) 2024, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+  title: "Management Agent Policy Advisor"
+  schemaVersion: 1.1.0
+  description: "Create required policies for management agent for the given user group and compartment."
+  version: "20240301"
+  locale: "en"
+
+  variableGroups:
+  - title: General Configuration
+    visible: false
+    variables:
+      - tenancy_ocid
+      - region
+      - compartment_ocid
+
+  - title: Required Policy Configuration
+    visible: true
+    variables:
+      - policyInfo
+      - policy_compartment_id
+      - policy_name
+
+  - title: Management Agent Policies
+    visible: true
+    variables:
+      - user_group_id
+      - resource_compartment_id
+
+  variables:
+    policy_compartment_id:
+      type: oci:identity:compartment:id
+      required: true
+      default: ${compartment_ocid}
+      title: Policy Compartment
+      description: Compartment where the policy definition should be created.
+
+    resource_compartment_id:
+      type: oci:identity:compartment:id
+      required: true
+      default: ${compartment_ocid}
+      title: Management Agent Resource Compartment
+      description: Compartment where the policies should be applied. Usually the management agents' compartment.
+
+    user_group_id:
+      type: oci:identity:groups:id
+      required: true
+      title: User group
+      description: User group for which the policies should be mapped.
+      dependsOn:
+        compartmentId: tenancy_ocid
+
+    policy_name:
+      type: string
+      required: true
+      title: Policy Name
+      default: ManagementAgent_Policy
+      description: Name of the policy.
+
+    policyInfo:
+      type: text
+      required: true
+      title: Policies to be created
+      description: Above is the template of policy statements that will be created.
+      multiline: true
+      default: "allow group <User group> to manage management-agents in compartment <Management Agent Resource Compartment>\nallow group <User group> to manage management-agent-install-keys in compartment <Management Agent Resource Compartment>\nallow group <User group> to read metrics in compartment <Management Agent Resource Compartment>\nallow group <User group> to read alarms in compartment <Management Agent Resource Compartment>\nallow group <User group> to read users in tenancy"
+
+    region:
+      visible: false
+
+    tenancy_ocid:
+      visible: false
+
+    compartment_ocid:
+      visible: false
