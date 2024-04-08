@@ -28,3 +28,6 @@ At a high level we have following quick start apps:
     This provides the automated agent deployment on multiple target hosts, where monitoring is required.<br>
     The current playbooks works for linux based hosts, but this can be extended to other operating systems as well.
     
+- [Management Agent Policy Advisor](./mgmtagent-policy-advisor/README.md):
+
+    This terraform app helps to setup the required IAM policies for management agents and agent install keys.

@@ -24,6 +24,9 @@ jobs:
     - name: Package ansible playbooks
       run: |
         cd ./deployment/ansible-playbooks && zip -r ../../ansible-playbooks.zip . && cd -
+    - name: Package Management Agent Policy Advisor
+      run: |
+        cd ./mgmtagent-policy-advisor && zip -r ../mgmtagent-policy-advisor.zip . && cd -
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -67,4 +70,13 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./ansible-playbooks.zip
         asset_name: ansible-playbooks.zip
+        asset_content_type: application/zip
+    - name: Upload Management Agent Policy Advisor package
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./mgmtagent-policy-advisor.zip
+        asset_name: mgmtagent-policy-advisor.zip
         asset_content_type: application/zip
