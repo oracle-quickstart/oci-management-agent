@@ -1,0 +1,1207 @@
+{
+	"dashboards": [
+		{
+			"dashboardId": "TMP_dashboardId",
+			"providerId": "management-agent",
+			"providerName": "Management Agent",
+			"providerVersion": "3.0.0",
+			"tiles": [
+				{
+					"displayName": "Docker Container States",
+					"savedSearchId": "TMP_docker_container_states_ssid",
+					"row": 0,
+					"column": 0,
+					"height": 2,
+					"width": 3,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Number of CPUs",
+					"savedSearchId": "TMP_cpu_count_ssid",
+					"row": 0,
+					"column": 3,
+					"height": 2,
+					"width": 2,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Docker Host Memory",
+					"savedSearchId": "TMP_docker_host_memory_ssid",
+					"row": 0,
+					"column": 5,
+					"height": 2,
+					"width": 2,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Docker Engine Network Actions",
+					"savedSearchId": "TMP_docker_engine_network_actions_ssid",
+					"row": 0,
+					"column": 7,
+					"height": 2,
+					"width": 5,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Total CPU Time",
+					"savedSearchId": "TMP_total_cpu_time_ssid",
+					"row": 2,
+					"column": 0,
+					"height": 3,
+					"width": 4,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Docker Process Virtual Memory",
+					"savedSearchId": "TMP_process_virtual_mem_ssid",
+					"row": 2,
+					"column": 4,
+					"height": 3,
+					"width": 4,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Docker Process RSS",
+					"savedSearchId": "TMP_docker_process_rss_ssid",
+					"row": 2,
+					"column": 8,
+					"height": 3,
+					"width": 4,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Docker Container Open FDs",
+					"savedSearchId": "TMP_docker_container_open_fds_ssid",
+					"row": 5,
+					"column": 0,
+					"height": 3,
+					"width": 6,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				},
+				{
+					"displayName": "Docker Failed Builds",
+					"savedSearchId": "TMP_docker_failed_builds_ssid",
+					"row": 5,
+					"column": 6,
+					"height": 3,
+					"width": 6,
+					"nls": {
+						
+					},
+					"uiConfig": {
+						
+					},
+					"dataConfig": [],
+					"state": "DEFAULT",
+					"drilldownConfig": [],
+					"parametersMap": {
+						"compartmentId": "$(dashboard.params.compartmentId)",
+						"time": "$(dashboard.params.time)"
+					},
+					"description": null
+				}
+			],
+			"displayName": "Sample Docker Engine Dashboard",
+			"description": "Demo of dashboard for Docker Engine Prometheus Metrics",
+			"compartmentId": "TMP_dashboard_cid",
+			"isOobDashboard": false,
+			"isShowInHome": false,
+			"metadataVersion": "2.0",
+			"isShowDescription": true,
+			"screenImage": "todo: provide value[mandatory]",
+			"nls": {
+				
+			},
+			"uiConfig": {
+				"isFilteringEnabled": false,
+				"isTimeRangeEnabled": true,
+				"isRefreshEnabled": true
+			},
+			"dataConfig": [],
+			"type": "normal",
+			"isFavorite": false,
+			"savedSearches": [
+				{
+					"id": "TMP_docker_process_rss_ssid",
+					"displayName": "Docker Process RSS",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Resident memory size in bytes",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "chart",
+						"chartInfo": {
+							"jetConfig": {
+								"type": "lineWithArea",
+								"timeAxisType": "enabled",
+								"xAxis": {
+									"viewportMin": "$(params.time.start)",
+									"viewportMax": "$(params.time.end)"
+								},
+								"yAxis": {
+									"title": "bytes"
+								},
+								"dataCursor": "on"
+							},
+							"value": "aggregatedDatapoints.value",
+							"group": "aggregatedDatapoints.timestamp",
+							"colorBy": "_allDimensionConglomerate",
+							"series": "_allDimensionConglomerate"
+						},
+						"defaultDataSource": "demo_prometheus/process_resident_memory_bytes"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/process_resident_memory_bytes",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "process_resident_memory_bytes[auto].mean()"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_docker_host_memory_ssid",
+					"displayName": "Docker Host Memory",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Amount of memory available on the host system in bytes",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "singleValue",
+						"singleValueInfo": {
+							"val": "aggregatedDatapoints.value",
+							"valConverterName": "numberConverter",
+							"valConverterOptions": {
+								"style": "unit",
+								"unit": "byte",
+								"maximumFractionDigits": 2
+							}
+						},
+						"defaultDataSource": "demo_prometheus/engine_daemon_engine_memory_bytes"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/engine_daemon_engine_memory_bytes",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "engine_daemon_engine_memory_bytes[1m].mean()",
+								"maxDataPoints": "useIntervalExact"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_docker_container_open_fds_ssid",
+					"displayName": "Docker Container Open FDs",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Number of open file descriptors",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "chart",
+						"chartInfo": {
+							"jetConfig": {
+								"type": "bar",
+								"timeAxisType": "enabled",
+								"xAxis": {
+									"viewportStartGroup": "$(params.time.start)",
+									"viewportEndGroup": "$(params.time.end)"
+								},
+								"dataCursor": "on"
+							},
+							"value": "aggregatedDatapoints.value",
+							"group": "aggregatedDatapoints.timestamp",
+							"colorBy": "_allDimensionConglomerate",
+							"series": "_allDimensionConglomerate"
+						},
+						"defaultDataSource": "demo_prometheus/process_open_fds"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/process_open_fds",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "process_open_fds[auto].mean()"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_docker_failed_builds_ssid",
+					"displayName": "Docker Failed Builds",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Number of triggered image builds",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "chart",
+						"chartInfo": {
+							"jetConfig": {
+								"type": "line",
+								"timeAxisType": "enabled",
+								"xAxis": {
+									"viewportMin": "$(params.time.start)",
+									"viewportMax": "$(params.time.end)"
+								},
+								"dataCursor": "on"
+							},
+							"value": "aggregatedDatapoints.value",
+							"group": "aggregatedDatapoints.timestamp",
+							"colorBy": "_allDimensionConglomerate",
+							"series": "_allDimensionConglomerate"
+						},
+						"defaultDataSource": "demo_prometheus/builder_builds_triggered_total"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/builder_builds_triggered_total",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "builder_builds_triggered_total[auto].increment()"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_docker_container_states_ssid",
+					"displayName": "Docker Container States",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Docker Container States",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "chart",
+						"chartInfo": {
+							"jetConfig": {
+								"type": "pie",
+								"timeAxisType": "enabled",
+								"styleDefaults": {
+									"pieInnerRadius": 0.5
+								},
+								"legend": {
+									"rendered": true,
+									"position": "bottom"
+								}
+							},
+							"value": "aggregatedDatapoints.value",
+							"group": "",
+							"colorBy": "dimensions.state",
+							"series": "_allDimensionConglomerate"
+						},
+						"defaultDataSource": "demo_prometheus/engine_daemon_container_states_containers"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/engine_daemon_container_states_containers",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "engine_daemon_container_states_containers[auto].groupBy(state).mean()"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_process_virtual_mem_ssid",
+					"displayName": "Docker Process Virtual Memory",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Virtual Memory size in bytes",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "chart",
+						"chartInfo": {
+							"jetConfig": {
+								"type": "lineWithArea",
+								"dataCursor": "on",
+								"yAxis": {
+									"title": "bytes"
+								},
+								"timeAxisType": "enabled",
+								"xAxis": {
+									"viewportMin": "$(params.time.start)",
+									"viewportMax": "$(params.time.end)"
+								}
+							},
+							"value": "aggregatedDatapoints.value",
+							"group": "aggregatedDatapoints.timestamp",
+							"colorBy": "_allDimensionConglomerate",
+							"series": "_allDimensionConglomerate"
+						},
+						"defaultDataSource": "demo_prometheus/process_virtual_memory_bytes"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/process_virtual_memory_bytes",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "process_virtual_memory_bytes[auto].mean()"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_docker_engine_network_actions_ssid",
+					"displayName": "Docker Engine Network Actions",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Number of seconds needed to process each action",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "chart",
+						"chartInfo": {
+							"jetConfig": {
+								"type": "bar",
+								"timeAxisType": "enabled",
+								"xAxis": {
+									"viewportStartGroup": "$(params.time.start)",
+									"viewportEndGroup": "$(params.time.end)"
+								},
+								"legend": {
+									"rendered": true,
+									"position": "bottom"
+								},
+								"stack": "on",
+								"dataCursor": "on"
+							},
+							"value": "aggregatedDatapoints.value",
+							"group": "aggregatedDatapoints.timestamp",
+							"colorBy": "dimensions.action",
+							"series": "dimensions.action"
+						},
+						"defaultDataSource": "demo_prometheus/engine_daemon_network_actions_seconds_bucket"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/engine_daemon_network_actions_seconds_bucket",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "engine_daemon_network_actions_seconds_bucket[1m].groupBy(action).mean()",
+								"maxDataPoints": "useIntervalExact"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_total_cpu_time_ssid",
+					"displayName": "Total CPU Time",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Total user and system CPU time spent in seconds",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "chart",
+						"chartInfo": {
+							"jetConfig": {
+								"type": "line",
+								"timeAxisType": "enabled",
+								"xAxis": {
+									"viewportMin": "$(params.time.start)",
+									"viewportMax": "$(params.time.end)"
+								},
+								"yAxis": {
+									"title": "seconds"
+								},
+								"dataCursor": "on"
+							},
+							"value": "aggregatedDatapoints.value",
+							"group": "aggregatedDatapoints.timestamp",
+							"colorBy": "_allDimensionConglomerate",
+							"series": "_allDimensionConglomerate"
+						},
+						"defaultDataSource": "demo_prometheus/process_cpu_seconds_total"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/process_cpu_seconds_total",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "process_cpu_seconds_total[auto].increment()"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				},
+				{
+					"id": "TMP_cpu_count_ssid",
+					"displayName": "Docker Number of CPUs",
+					"providerId": "management-agent",
+					"providerVersion": "3.0.0",
+					"providerName": "Management Agent",
+					"compartmentId": "TMP_ss_cid",
+					"isOobSavedSearch": false,
+					"description": "Number of CPUs on the host system that is running the docker engine",
+					"nls": {
+						
+					},
+					"type": "WIDGET_SHOW_IN_DASHBOARD",
+					"uiConfig": {
+						"vizType": "singleValue",
+						"singleValueInfo": {
+							"val": "aggregatedDatapoints.value"
+						},
+						"defaultDataSource": "demo_prometheus/engine_daemon_engine_cpus_cpus"
+					},
+					"dataConfig": [
+						{
+							"name": "demo_prometheus/engine_daemon_engine_cpus_cpus",
+							"type": "monitoringDataSource",
+							"parameters": {
+								"compartmentId": "$(params.compartmentId)",
+								"startTime": "$(params.time.start)",
+								"endTime": "$(params.time.end)",
+								"regionName": "$(params.regionName)",
+								"namespace": "demo_prometheus",
+								"mql": "engine_daemon_engine_cpus_cpus[auto].mean()"
+							}
+						}
+					],
+					"screenImage": "...",
+					"metadataVersion": "2.0",
+					"widgetTemplate": "visualizations/chartWidgetTemplate.html",
+					"widgetVM": "visualizations/chartWidget",
+					"freeformTags": {
+						
+					},
+					"definedTags": {
+						
+					},
+					"parametersConfig": [
+						{
+							"name": "time",
+							"displayName": "$(bundle.globalSavedSearch.TIME_PARAMETER_NAME)",
+							"required": true,
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-time-selector-filter",
+									"parametersMap": {
+										"maxDurationDays": 89
+									}
+								}
+							}
+						},
+						{
+							"name": "compartmentId",
+							"displayName": "$(bundle.globalSavedSearch.COMPARTMENT)",
+							"required": true,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-compartment-filter"
+							],
+							"editUi": {
+								"inputType": "compartmentSelect"
+							}
+						},
+						{
+							"name": "regionName",
+							"displayName": "$(bundle.globalSavedSearch.REGION)",
+							"required": false,
+							"defaultFilterIds": [
+								"OOBSS-management-dashboard-region-filter"
+							],
+							"editUi": {
+								"inputType": "savedSearch",
+								"filterTile": {
+									"filterId": "OOBSS-management-dashboard-region-filter"
+								}
+							}
+						}
+					],
+					"featuresConfig": {
+						"crossService": {
+							"shared": true
+						},
+						"dependencies": []
+					},
+					"drilldownConfig": []
+				}
+			],
+			"parametersConfig": [
+				{
+					"savedSearchId": "OOBSS-management-dashboard-compartment-filter",
+					"displayName": "Compartment",
+					"width": 3,
+					"state": "DEFAULT",
+					"parametersMap": {
+						"isStoreInLocalStorage": false,
+						"isActiveCompartment": "true"
+					},
+					"name": "compartmentId",
+					"localStorageKey": "compartmentId"
+				},
+				{
+					"name": "time",
+					"displayName": "$(bundle.globalSavedSearch.TIME)",
+					"src": "$(context.time)"
+				}
+			],
+			"featuresConfig": {
+				"crossService": {
+					"shared": true
+				}
+			},
+			"drilldownConfig": [],
+			"freeformTags": {
+				
+			},
+			"definedTags": {
+				
+			}
+		}
+	]
+}
