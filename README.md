@@ -1,5 +1,5 @@
 <!--
-# Copyright (c) 2022, Oracle and/or its affiliates.
+# Copyright (c) 2024, Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 -->
 
@@ -31,3 +31,7 @@ At a high level we have following quick start apps:
 - [Management Agent Policy Advisor](./mgmtagent-policy-advisor/README.md):
 
     This terraform app helps to setup the required IAM policies for management agents and agent install keys.
+    
+- [Sample Dashboards](./sample-dashboards/README.md):
+
+    Sample Dashboards are provided to illustrate how metrics collected by Management Agent appear in the Management Dashboard.
