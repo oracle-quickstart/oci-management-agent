@@ -31,3 +31,7 @@ At a high level we have following quick start apps:
 - [Management Agent Policy Advisor](./mgmtagent-policy-advisor/README.md):
 
     This terraform app helps to setup the required IAM policies for management agents and agent install keys.
+    
+- [Sample Dashboards](./sample-dashboards/README.md):
+
+    Sample Dashboards are provided to illustrate how metrics collected by Management Agent appear in the Management Dashboard.
