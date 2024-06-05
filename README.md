@@ -37,4 +37,4 @@ At a high level we have following quick start apps:
     
 - [Sample Dashboards](./sample-dashboards/README.md):
 
-    Sample Dashboards are provided to illustrate how metrics collected by Management Agent appear in the Management Dashboard. 
+    Sample Dashboards are provided to illustrate how metrics collected by Management Agent appear in the Management Dashboard.  
