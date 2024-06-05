@@ -11,13 +11,16 @@ This Github repository is a collection of various quick start applications offer
 
 At a high level we have following quick start apps:
 
-- [ATP Monitoring](./atp-monitoring/README.md):
-
-    This terraform app for monitoring audit logs from an Autonomous Database for transaction processing (ATP),automates the configuration needed to start processing ATP audit logs for analysis in the OCI Logging Analytics.
+> [!CAUTION]
+   Management Agent helm charts for Kubernetes Monitoring are no longer maintained and monitored. Oracle Management Agent helm charts are now part of the OCI Kubernetes Monitoring Solution. Please use the helm charts from [Oracle QuickStart for OCI Kubernetes Monitoring](https://github.com/oracle-quickstart/oci-kubernetes-monitoring).
 
 - [Kubernetes Monitoring](./kubernetes-monitoring/mgmtagent_helm/README.md):
 
-    Oracle Management Agent is now available to be deployed as a Docker Container. This helm chart application provides easy deployment way of Management Agent and offers out-of-box monitoring of Kubernetes Cluster.
+    Oracle Management Agent helm charts are now part of the OCI Kubernetes Monitoring Solution. Please use the helm charts from [Oracle QuickStart for OCI Kubernetes Monitoring](https://github.com/oracle-quickstart/oci-kubernetes-monitoring).
+
+- [ATP Monitoring](./atp-monitoring/README.md):
+
+    This terraform app for monitoring audit logs from an Autonomous Database for transaction processing (ATP),automates the configuration needed to start processing ATP audit logs for analysis in the OCI Logging Analytics.
 
 - [Managment Gateway Quick Start](./management-gateway-quickstart/README.md):
 
