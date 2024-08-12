@@ -1,5 +1,5 @@
 <!--
-# Copyright (c) 2022, Oracle and/or its affiliates.
+# Copyright (c) 2024, Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 -->
 
@@ -11,13 +11,16 @@ This Github repository is a collection of various quick start applications offer
 
 At a high level we have following quick start apps:
 
-- [ATP Monitoring](./atp-monitoring/README.md):
-
-    This terraform app for monitoring audit logs from an Autonomous Database for transaction processing (ATP),automates the configuration needed to start processing ATP audit logs for analysis in the OCI Logging Analytics.
+> [!CAUTION]
+   Management Agent helm charts for Kubernetes Monitoring are no longer maintained and monitored. Oracle Management Agent helm charts are now part of the OCI Kubernetes Monitoring Solution. Please use the helm charts from [Oracle QuickStart for OCI Kubernetes Monitoring](https://github.com/oracle-quickstart/oci-kubernetes-monitoring).
 
 - [Kubernetes Monitoring](./kubernetes-monitoring/mgmtagent_helm/README.md):
 
-    Oracle Management Agent is now available to be deployed as a Docker Container. This helm chart application provides easy deployment way of Management Agent and offers out-of-box monitoring of Kubernetes Cluster.
+    Oracle Management Agent helm charts are now part of the OCI Kubernetes Monitoring Solution. Please use the helm charts from [Oracle QuickStart for OCI Kubernetes Monitoring](https://github.com/oracle-quickstart/oci-kubernetes-monitoring).
+
+- [ATP Monitoring](./atp-monitoring/README.md):
+
+    This terraform app for monitoring audit logs from an Autonomous Database for transaction processing (ATP),automates the configuration needed to start processing ATP audit logs for analysis in the OCI Logging Analytics.
 
 - [Managment Gateway Quick Start](./management-gateway-quickstart/README.md):
 
@@ -28,3 +31,10 @@ At a high level we have following quick start apps:
     This provides the automated agent deployment on multiple target hosts, where monitoring is required.<br>
     The current playbooks works for linux based hosts, but this can be extended to other operating systems as well.
     
+- [Management Agent Policy Advisor](./mgmtagent-policy-advisor/README.md):
+
+    This terraform app helps to setup the required IAM policies for management agents and agent install keys.
+    
+- [Sample Dashboards](./sample-dashboards/README.md):
+
+    Sample Dashboards are provided to illustrate how metrics collected by Management Agent appear in the Management Dashboard.  
