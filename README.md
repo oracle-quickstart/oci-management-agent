@@ -52,3 +52,4 @@ Please consult the [security guide](./SECURITY.md) for our responsible security 
 Copyright (c) 2019 Oracle and/or its affiliates.
 
 Released under the GNU GENERAL PUBLIC LICENSE, Version 3
+<https://www.gnu.org/licenses/>.
