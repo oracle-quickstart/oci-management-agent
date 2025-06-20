@@ -38,3 +38,18 @@ At a high level we have following quick start apps:
 - [Sample Dashboards](./sample-dashboards/README.md):
 
     Sample Dashboards are provided to illustrate how metrics collected by Management Agent appear in the Management Dashboard.  
+
+## Contributing
+
+This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
+
+## Security
+
+Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
+
+## License
+
+Copyright (c) 2019 Oracle and/or its affiliates.
+
+Released under the GNU GENERAL PUBLIC LICENSE, Version 3
+<https://www.gnu.org/licenses/>.
